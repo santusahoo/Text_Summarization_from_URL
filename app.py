@@ -1,7 +1,7 @@
 import os
 import validators 
 import streamlit as st
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from langchain.schema import Document
 from urllib.parse import urlparse, parse_qs
@@ -11,7 +11,7 @@ from langchain.chains.summarize import load_summarize_chain
 from langchain_community.document_loaders import UnstructuredURLLoader
 
 # Load environment variables
-#load_dotenv(r'F:\Udemy\langchain\.env')
+load_dotenv(r'\.env')
 
 # Streamlit app configuration
 st.set_page_config(page_title="Langchain: Summarize text from YT or website")
@@ -54,7 +54,7 @@ def get_video_id(url):
 
 prompt_template = """
 Summarize the following content into a maximum of 500 words, ensuring the summary is clear, concise, 
-and retains the most important information. 
+and retains the most important information. please don't generate any text outside of the summary.
 The summary should be written in the specified language: {language}.
 Content: {text}
 """
