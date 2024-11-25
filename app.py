@@ -129,6 +129,7 @@ if 'summary' in st.session_state:
                 custom_prompt = (
                     f"You are an expert assistant. Based on the summary provided below, "
                     f"answer the question in a detailed manner(you can add more to make it complete):\n\n"
+                    f"The summary should be written in the specified language: {language}."
                     f"Summary:\n{st.session_state['summary']}\n\n"
                     f"Question:\n{user_question}"
                 )
