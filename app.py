@@ -138,11 +138,11 @@ if 'summary' in st.session_state:
         st.session_state['conversation'] = []
 
     summary_doc = Document(page_content=st.session_state['summary'])
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=800, chunk_overlap=100)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
     chunks = text_splitter.split_documents([summary_doc])
     vectorstore = FAISS.from_documents(chunks, embedding=embeddings)
 
-    retriever = vectorstore.as_retriever()
+    retriever = vectorstore.as_retriever(search_type="similarity",search_kwargs={"k":2})
 
     contextualize_q_system_prompt=(
         "Given a chat history and the latest user question"
