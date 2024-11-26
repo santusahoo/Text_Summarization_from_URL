@@ -120,13 +120,17 @@ if st.button("Summarize the content from YT or website"):
 
                 if summary_text:
                     st.session_state['summary'] = summary_text
-                    st.success("Summary generated successfully!")
-                    st.write(summary_text)
+                    # st.success("Summary generated successfully!")
+                    # st.write(summary_text)
                 else:
                     st.error("Failed to generate the summary.")
 
 # Question-Answering Based on Summary
 if 'summary' in st.session_state:
+    # Always display the summary
+    st.subheader("Summary")
+    st.write(st.session_state['summary'])
+
     st.subheader("Ask questions about the summary")
     user_question = st.text_input("Your question", key="user_question")
 
