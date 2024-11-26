@@ -138,7 +138,7 @@ if 'summary' in st.session_state:
         st.session_state['conversation'] = []
 
     summary_doc = Document(page_content=st.session_state['summary'])
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=50)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=800, chunk_overlap=100)
     chunks = text_splitter.split_documents([summary_doc])
     vectorstore = FAISS.from_documents(chunks, embedding=embeddings)
 
