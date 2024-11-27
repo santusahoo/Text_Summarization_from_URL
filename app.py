@@ -28,7 +28,7 @@ embeddings=HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 st.set_page_config(page_title="Langchain: Summarize text from YT or website")
 st.title("Summarize text from YT or website")
 st.subheader("Summarize URL")
-st.subheader("Sample URL: https://towardsdatascience.com/activation-functions-neural-networks-1cbd9f8d91d6")
+st.subheader("Sample URL: https://en.wikipedia.org/wiki/Feature_hashing")
 st.subheader("Sample Youtube video link: https://www.youtube.com/watch?v=s-V7gKrsels")
 
 # Sidebar for model selection
