@@ -28,6 +28,8 @@ embeddings=HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 st.set_page_config(page_title="Langchain: Summarize text from YT or website")
 st.title("Summarize text from YT or website")
 st.subheader("Summarize URL")
+st.subheader("Sample URL: https://towardsdatascience.com/activation-functions-neural-networks-1cbd9f8d91d6")
+st.subheader("Sample Youtube video link: https://www.youtube.com/watch?v=s-V7gKrsels")
 
 # Sidebar for model selection
 model_options = ["llama-3.1-70b-versatile","Gemma-7b-It","Gemma2-9b-It","mixtral-8x7b-32768",
@@ -82,7 +84,7 @@ def fetch_url_content(url):
         st.error(f"Failed to load content from the URL: {e}")
         return None
 
-prompt_template = ("Summarize the following content into a maximum of 500 words, ensuring"
+prompt_template = ("Summarize the following content, ensuring"
                 "the summary is clear, concise, and retains the most important information."
                 "please don't generate any text outside of the summary."
                 "The summary should be written in the specified language: {language}."
@@ -138,11 +140,11 @@ if 'summary' in st.session_state:
         st.session_state['conversation'] = []
 
     summary_doc = Document(page_content=st.session_state['summary'])
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=700, chunk_overlap=100)
     chunks = text_splitter.split_documents([summary_doc])
     vectorstore = FAISS.from_documents(chunks, embedding=embeddings)
 
-    retriever = vectorstore.as_retriever(search_type="similarity",search_kwargs={"k":2})
+    retriever = vectorstore.as_retriever(search_type="similarity",search_kwargs={"k":5})
 
     contextualize_q_system_prompt=(
         "Given a chat history and the latest user question"
