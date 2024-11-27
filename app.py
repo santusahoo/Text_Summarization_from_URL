@@ -25,11 +25,10 @@ os.environ['HF_TOKEN']=os.getenv("HF_TOKEN")
 embeddings=HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
 # Streamlit app configuration
-st.set_page_config(page_title="Langchain: Summarize text from YT or website")
-st.title("Summarize text from YT or website")
+st.set_page_config(page_title="Langchain: Summarize text from website")
+st.title("Summarize text from website")
 st.subheader("Summarize URL")
 st.markdown("Sample URL: https://medium.com/geekculture/git-and-github-for-beginner-data-scientists-602a3a5574d8")
-st.markdown("Sample YT video link: https://www.youtube.com/watch?v=4b5d3muPQmA&t=388s")
 
 # Sidebar for model selection
 model_options = ["llama-3.1-70b-versatile","Gemma-7b-It","Gemma2-9b-It","mixtral-8x7b-32768",
