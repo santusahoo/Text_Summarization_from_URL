@@ -93,7 +93,7 @@ prompt = PromptTemplate(template=prompt_template,input_variables=['text','langua
 # Input for URL summarization
 generic_url = st.text_input("URL",label_visibility='collapsed',placeholder="Enter the URL to Summarize")
 
-if st.button("Summarize the content from YT or website"):
+if st.button("Summarize the content from website"):
     if not groq_api_key.strip() or not generic_url.strip():
         st.error("Please provide the information to get started")
     elif not validators.url(generic_url) or ('youtube' not in generic_url and 'http' not in generic_url):
